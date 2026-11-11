@@ -1,0 +1,56 @@
+name: Deploy TCH to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Set up the project's Node.js version
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      # GitHub Pages provides the repository path for project sites and an empty path for custom domains.
+      - name: Build the Angular application
+        run: npm run build -- --base-href "${{ steps.pages.outputs.base_path }}/"
+
+      # Serve the Angular app as the Pages not-found document so direct route visits still boot Angular.
+      - name: Add the route fallback
+        run: cp dist/tch/browser/index.html dist/tch/browser/404.html
+
+      - name: Upload the browser build
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/tch/browser
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
