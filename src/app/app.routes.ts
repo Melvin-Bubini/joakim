@@ -1,3 +1,16 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  // Keep page bundles separate so each route loads only when visited.
+  {
+    path: '',
+    loadComponent: () => import('./pages/home/home-page').then((page) => page.HomePage),
+    title: 'TCH — bilservice med omtanke',
+  },
+  {
+    path: 'kontakt',
+    loadComponent: () => import('./pages/contact/contact-page').then((page) => page.ContactPage),
+    title: 'Kontakta TCH — personlig bilservice',
+  },
+  { path: '**', redirectTo: '' },
+];

@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SiteFooter } from './shared/components/site-footer/site-footer';
+import { SiteHeader } from './shared/components/site-header/site-header';
 
+// The root component keeps shared site chrome around the active route.
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SiteHeader, SiteFooter],
   selector: 'app-root',
-  styleUrl: './app.css',
+  styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('joakim');
-}
+export class App {}

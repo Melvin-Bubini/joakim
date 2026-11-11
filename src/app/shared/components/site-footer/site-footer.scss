@@ -1,0 +1,100 @@
+@use 'styles/abstracts/colors' as *;
+
+// Desktop footer columns align the brand and contact information.
+.site-footer {
+  padding-top: 4.5rem;
+  background: $color-ink;
+  color: $color-white;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 2rem;
+  padding-bottom: 3.5rem;
+}
+.footer-brand {
+  color: $color-white;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  text-decoration: none;
+}
+.footer-brand-block p {
+  margin: 0.9rem 0 0;
+  color: rgba($color-white, 0.64);
+  line-height: 1.6;
+}
+.footer-label {
+  margin: 0 0 1rem;
+  color: $color-accent;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  address,
+  a {
+    color: rgba($color-white, 0.78);
+    font-size: 0.9rem;
+    font-style: normal;
+    line-height: 1.7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $color-accent;
+  }
+}
+.back-to-top {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba($color-white, 0.25);
+  border-radius: 50%;
+  color: $color-white;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  &:hover {
+    background: $color-accent;
+    color: $color-ink;
+    transform: translateY(-3px);
+  }
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  border-top: 1px solid rgba($color-white, 0.16);
+  color: rgba($color-white, 0.54);
+  font-size: 0.75rem;
+}
+
+/* Narrow footer layout: stack the brand above the two contact columns. */
+@media (max-width: 700px) {
+  .site-footer {
+    padding-top: 3.5rem;
+  }
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1rem;
+  }
+  .footer-brand-block {
+    grid-column: 1 / -1;
+  }
+  .back-to-top {
+    display: none;
+  }
+  .footer-bottom {
+    flex-direction: column;
+  }
+}

@@ -1,3 +1,4 @@
+// Verify the root shell can be created with its shared navigation and footer.
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 

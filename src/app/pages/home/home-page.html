@@ -1,0 +1,199 @@
+<section class="hero">
+  <!-- Use a people-focused workshop photo so the mechanic is the main subject. -->
+  <img
+    class="hero-image"
+    src="https://images.unsplash.com/photo-1632823471565-1ecf94f8799a?auto=format&fit=crop&w=1200&q=85"
+    srcset="
+      https://images.unsplash.com/photo-1632823471565-1ecf94f8799a?auto=format&fit=crop&w=640&q=80   640w,
+      https://images.unsplash.com/photo-1632823471565-1ecf94f8799a?auto=format&fit=crop&w=1200&q=82 1200w,
+      https://images.unsplash.com/photo-1632823471565-1ecf94f8799a?auto=format&fit=crop&w=1800&q=85 1800w,
+      https://images.unsplash.com/photo-1632823471565-1ecf94f8799a?auto=format&fit=crop&w=2200&q=88 2200w
+    "
+    sizes="100vw"
+    alt="Mekaniker arbetar med en bil inne i verkstaden"
+    fetchpriority="high"
+    width="2200"
+    height="1467"
+  />
+  <div class="hero-shade"></div>
+
+  <div class="hero-content page-shell">
+    <p class="eyebrow hero-eyebrow"><span></span> EN PERSONLIG BILVERKSTAD</p>
+    <h1>Jag tar hand om din bil.<br /><em>Med omtanke hela vägen.</em></h1>
+    <p class="hero-intro">
+      På TCH pratar du direkt med mig som tar hand om bilen. Jag lyssnar, förklarar och gör jobbet
+      ordentligt.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-accent" routerLink="/kontakt" fragment="form"
+        >Prata med mig <span aria-hidden="true">↗</span></a
+      >
+      <a class="text-link text-link-light" href="#vara-tjanster"
+        >Så jobbar jag <span aria-hidden="true">↓</span></a
+      >
+    </div>
+  </div>
+
+  <div class="hero-note">
+    <span class="hero-note-dot"></span><span>DITT SAMTAL · MITT ANSVAR</span>
+  </div>
+  <a class="hero-scroll" href="#vara-tjanster" aria-label="Scrolla till våra tjänster"
+    >SCROLLA <span aria-hidden="true">↓</span></a
+  >
+</section>
+
+<!-- A short owner introduction explains the one-person workshop. -->
+<section class="intro-section section-pad page-shell">
+  <div class="section-kicker"><span>01</span><span>EN LITEN VERKSTAD</span></div>
+  <div class="intro-copy">
+    <h2>Här är det jag<br /><span>som tar hand om bilen.</span></h2>
+    <p>
+      Jag driver TCH själv. När du lämnar bilen pratar du direkt med mekanikern som ska arbeta på
+      den. Du får raka besked, och jag hör alltid av mig innan något extra görs.
+    </p>
+    <a class="text-link" routerLink="/kontakt">Hör av dig <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<section id="vara-tjanster" class="services-section section-pad">
+  <div class="page-shell">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker section-kicker-light">
+          <span>02</span><span>DET HÄR KAN JAG HJÄLPA TILL MED</span>
+        </div>
+        <h2>Hjälp med bilen.<br /><em>Utan krångel.</em></h2>
+      </div>
+      <p>
+        Från vanlig service till ett ljud du inte känner igen. Berätta vad bilen behöver, så tar jag
+        det därifrån.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      @for (service of services; track service.id) {
+        <article class="service-card">
+          <div class="service-card-top">
+            <span class="service-number">{{ service.number }} / 03</span>
+            <span class="service-icon" aria-hidden="true">
+              @switch (service.icon) {
+                @case ('service') {
+                  <svg viewBox="0 0 48 48">
+                    <path
+                      d="M29 10a11 11 0 0 0-13 14L7 33a5.7 5.7 0 0 0 8 8l9-9a11 11 0 0 0 14-13l-7 7-7-2-2-7 7-7Z"
+                    />
+                  </svg>
+                }
+                @case ('diagnostics') {
+                  <svg viewBox="0 0 48 48">
+                    <path d="M9 9h30v24H9zM18 40h12M24 33v7M16 18h16M16 24h9" />
+                  </svg>
+                }
+                @case ('tires') {
+                  <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="16" />
+                    <circle cx="24" cy="24" r="7" />
+                    <path d="M24 8v9M24 31v9M8 24h9M31 24h9" />
+                  </svg>
+                }
+              }
+            </span>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <span class="service-detail">{{ service.detail }}</span>
+          <a
+            class="card-arrow"
+            routerLink="/kontakt"
+            [attr.aria-label]="'Fråga mig om ' + service.title"
+            >↗</a
+          >
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- The workshop image and checklist describe how a service visit works. -->
+<section class="workshop-section section-pad page-shell">
+  <div class="workshop-image-wrap">
+    <img
+      src="https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=900&q=82"
+      srcset="
+        https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=600&q=78   600w,
+        https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=900&q=82   900w,
+        https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1400&q=85 1400w
+      "
+      sizes="(max-width: 850px) calc(100vw - 2rem), 50vw"
+      alt="Mekaniker arbetar med bilens motor och elektronik"
+      loading="lazy"
+      width="1400"
+      height="933"
+    />
+    <div class="image-stamp">
+      <span>TCH</span><small>SKRUVAR MED<br />OMTANKE</small>
+    </div>
+  </div>
+  <div class="workshop-copy">
+    <div class="section-kicker"><span>03</span><span>SÅ GÅR DET TILL</span></div>
+    <h2>Du får prata<br /><span>direkt med mig.</span></h2>
+    <p>
+      Jag börjar med att lyssna på vad du märkt. Sedan går jag igenom bilen och förklarar vad jag
+      hittar, så att du vet vad som händer och varför.
+    </p>
+    <ul class="promise-list">
+      <li><span>✓</span> Du pratar direkt med mekanikern</li>
+      <li><span>✓</span> Jag stämmer av innan extra arbete</li>
+      <li><span>✓</span> Jag förklarar utan onödigt fackspråk</li>
+    </ul>
+    <a class="text-link" routerLink="/kontakt"
+      >Hör av dig till mig <span aria-hidden="true">↗</span></a
+    >
+  </div>
+</section>
+
+<section class="photo-band" aria-label="Mekaniker och verkstadsarbete">
+  <img
+    class="photo-band-image photo-band-image-one"
+    src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80"
+    srcset="
+      https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=500&q=78   500w,
+      https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=82   800w,
+      https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=85 1200w
+    "
+    sizes="(max-width: 600px) 50vw, 33vw"
+    alt="Mekaniker fyller på olja i en motor"
+    loading="lazy"
+    width="1200"
+    height="800"
+  />
+  <div class="photo-band-copy">
+    <span>EN LITEN VERKSTAD</span>
+    <p>Ett par händer.<br />Ett personligt ansvar.</p>
+  </div>
+  <img
+    class="photo-band-image photo-band-image-two"
+    src="https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=700&q=80"
+    srcset="
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=500&q=78   500w,
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=800&q=82   800w,
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1200&q=85 1200w
+    "
+    sizes="(max-width: 600px) 50vw, 33vw"
+    alt="Mekaniker arbetar med bilens motor"
+    loading="lazy"
+    width="1200"
+    height="800"
+  />
+</section>
+
+<!-- End the page with one clear path to contact the mechanic. -->
+<section class="closing-cta section-pad page-shell">
+  <div>
+    <p class="eyebrow"><span></span> VAD BEHÖVER BILEN?</p>
+    <h2>Berätta vad<br />som hänt.</h2>
+  </div>
+  <a class="button button-dark" routerLink="/kontakt" fragment="form"
+    >Skriv till mig <span aria-hidden="true">↗</span></a
+  >
+</section>

@@ -1,0 +1,38 @@
+@use 'styles/abstracts/colors' as *;
+
+// Shared form controls keep focus, error, and placeholder states consistent across pages.
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $color-line;
+  border-radius: 0;
+  outline: 0;
+  background: $color-paper;
+  color: $color-ink;
+  font: inherit;
+  font-size: 0.88rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+
+  &::placeholder {
+    color: $color-muted-light;
+  }
+  &:focus {
+    border-color: $color-brand;
+    box-shadow: 0 0 0 3px rgba($color-brand, 0.12);
+  }
+  &[aria-invalid='true'] {
+    border-color: $color-error;
+  }
+}
+
+input.form-control {
+  min-height: 48px;
+  padding: 0 0.85rem;
+}
+textarea.form-control {
+  min-height: 135px;
+  padding: 0.8rem 0.85rem;
+  resize: vertical;
+}

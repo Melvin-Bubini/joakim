@@ -1,5 +1,5 @@
 {
-  "name": "joakim",
+  "name": "tch",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -26,6 +26,7 @@
     "@angular/compiler-cli": "^22.2.0",
     "jsdom": "^30.0.0",
     "prettier": "^3.8.1",
+    "sass": "^1.108.2",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"
   },

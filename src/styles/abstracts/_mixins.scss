@@ -1,0 +1,5 @@
+// Use one visible keyboard focus treatment throughout the site.
+@mixin focus-ring($color: #87634b) {
+  outline: 3px solid $color;
+  outline-offset: 3px;
+}

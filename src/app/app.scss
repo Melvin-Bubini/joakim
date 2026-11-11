@@ -1,0 +1,9 @@
+// Keep the shared application shell tall enough for short pages and the footer.
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 60vh;
+}

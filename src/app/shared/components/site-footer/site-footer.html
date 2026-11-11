@@ -1,0 +1,25 @@
+<!-- Footer links and contact values are shared across every route. -->
+<footer class="site-footer">
+  <div class="footer-main page-shell">
+    <div class="footer-brand-block">
+      <a class="footer-brand" routerLink="/" aria-label="TCH – till startsidan">
+        TCH
+      </a>
+      <p>En liten verkstad.<br />Ett personligt ansvar.</p>
+    </div>
+    <div class="footer-column">
+      <p class="footer-label">HITTA HIT</p>
+      <address>{{ contact.street }}<br />{{ contact.city }}</address>
+    </div>
+    <div class="footer-column">
+      <p class="footer-label">KONTAKTA MIG</p>
+      <a [href]="'tel:' + contact.phoneLink">{{ contact.phone }}</a>
+      <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+    </div>
+    <a class="back-to-top" href="#main-content" aria-label="Till sidans början">↑</a>
+  </div>
+  <div class="footer-bottom page-shell">
+    <span>© {{ currentYear }} TCH Bilverkstad</span>
+    <span>Service med omtanke, varje mil.</span>
+  </div>
+</footer>

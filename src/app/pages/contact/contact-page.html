@@ -1,0 +1,168 @@
+<section class="contact-hero">
+  <div class="page-shell contact-hero-inner">
+    <div>
+      <p class="eyebrow"><span></span> JAG FINNS HÄR FÖR DIG</p>
+      <h1>Hör av dig.<br /><em>Jag lyssnar.</em></h1>
+    </div>
+    <p class="contact-hero-note">
+      En fråga, en varningslampa eller dags för service? Du pratar direkt med mig som tar hand om
+      bilen.
+    </p>
+  </div>
+  <span class="contact-hero-index">TCH / KONTAKT</span>
+</section>
+
+<section class="contact-layout page-shell section-pad">
+  <!-- Keep direct contact methods and opening hours together on wider screens. -->
+  <div class="contact-details">
+    <div class="section-kicker"><span>01</span><span>KONTAKTUPPGIFTER</span></div>
+    <h2>Prata direkt<br />med mig.</h2>
+    <p class="details-intro">
+      Jag driver TCH själv och hjälper dig gärna med frågor, råd och nästa steg.
+    </p>
+
+    <div class="contact-methods">
+      <a class="contact-method" [href]="'tel:' + contact.phoneLink">
+        <span class="method-label">RING MIG</span>
+        <span class="method-value">{{ contact.phone }} <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="contact-method" [href]="'mailto:' + contact.email">
+        <span class="method-label">SKRIV TILL MIG</span>
+        <span class="method-value">{{ contact.email }} <span aria-hidden="true">↗</span></span>
+      </a>
+      <div class="contact-method contact-address">
+        <span class="method-label">HITTA HIT</span>
+        <address class="method-value">{{ contact.street }}<br />{{ contact.city }}</address>
+      </div>
+    </div>
+
+    <div class="hours-card">
+      <div class="hours-title">
+        <span class="hours-dot"></span><span>VERKSTADENS ÖPPETTIDER</span>
+      </div>
+      @for (row of openingHours; track row.day) {
+        <div class="hours-row">
+          <span>{{ row.day }}</span
+          ><strong>{{ row.hours }}</strong>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- This form opens an email draft; it does not create a booking or send to a server. -->
+  <div id="form" class="form-panel">
+    <div class="section-kicker"><span>02</span><span>SKICKA EN FÖRFRÅGAN</span></div>
+    <h2>Vad behöver bilen hjälp med?</h2>
+    <p class="form-intro">Fyll i formuläret så öppnar jag ett mejl med dina uppgifter.</p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" novalidate>
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Namn <b>*</b></span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            placeholder="Ditt namn"
+            [attr.aria-invalid]="
+              contactForm.controls.name.invalid && contactForm.controls.name.touched
+            "
+          />
+          @if (contactForm.controls.name.invalid && contactForm.controls.name.touched) {
+            <small class="field-error">Skriv ditt namn så jag vet vem jag ska kontakta.</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <span>E-post <b>*</b></span>
+          <input
+            class="form-control"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="namn@exempel.se"
+            [attr.aria-invalid]="
+              contactForm.controls.email.invalid && contactForm.controls.email.touched
+            "
+          />
+          @if (contactForm.controls.email.invalid && contactForm.controls.email.touched) {
+            <small class="field-error">Ange en giltig e-postadress.</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <span>Telefon</span>
+          <input
+            class="form-control"
+            type="tel"
+            formControlName="phone"
+            autocomplete="tel"
+            placeholder="Ditt telefonnummer"
+          />
+        </label>
+
+        <label class="form-field">
+          <span>Registreringsnummer</span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="registrationNumber"
+            autocomplete="off"
+            placeholder="ABC 123"
+          />
+        </label>
+
+        <label class="form-field form-field-full">
+          <span>Vad behöver bilen hjälp med? <b>*</b></span>
+          <textarea
+            class="form-control"
+            rows="5"
+            formControlName="message"
+            placeholder="Beskriv gärna vad du har märkt eller vilken service du behöver."
+            [attr.aria-invalid]="
+              contactForm.controls.message.invalid && contactForm.controls.message.touched
+            "
+          ></textarea>
+          @if (contactForm.controls.message.invalid && contactForm.controls.message.touched) {
+            <small class="field-error"
+              >Skriv gärna minst 10 tecken om vad du behöver hjälp med.</small
+            >
+          }
+        </label>
+      </div>
+
+      <div class="form-submit-row">
+        <button class="button button-dark" type="submit">
+          Förbered mejl <span aria-hidden="true">↗</span>
+        </button>
+        <span class="required-note">* Obligatoriska fält</span>
+      </div>
+
+      @if (submissionNotice(); as notice) {
+        <p class="submission-notice" role="status">{{ notice }}</p>
+      }
+    </form>
+  </div>
+</section>
+
+<section class="contact-bottom">
+  <img
+    class="contact-bottom-image"
+    src="https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1200&q=80"
+    srcset="
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=640&q=78   640w,
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1200&q=82 1200w,
+      https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1800&q=85 1800w
+    "
+    sizes="100vw"
+    alt="Mekaniker arbetar omsorgsfullt med en bil"
+    loading="lazy"
+    width="1800"
+    height="1200"
+  />
+  <div class="contact-bottom-copy page-shell">
+    <p>EN VERKSTAD. EN MEKANIKER.</p>
+    <h2>Personligt<br /><em>från början till slut.</em></h2>
+  </div>
+</section>

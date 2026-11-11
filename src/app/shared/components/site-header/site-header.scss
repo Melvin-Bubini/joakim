@@ -1,0 +1,133 @@
+@use 'styles/abstracts/colors' as *;
+
+// Desktop header: brand, route links, and the contact action share one row.
+.site-header {
+  position: relative;
+  z-index: 10;
+  background: $color-paper;
+  border-bottom: 1px solid $color-line;
+}
+.header-inner {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  color: $color-ink;
+  text-decoration: none;
+}
+.brand-mark {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+.brand-caption {
+  color: $color-muted;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  a {
+    color: $color-ink-soft;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 160ms ease;
+    &:hover,
+    &.is-active {
+      color: $color-brand;
+    }
+  }
+}
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.35rem;
+  background: $color-brand;
+  color: $color-white;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+  span {
+    color: $color-accent;
+    font-size: 1rem;
+  }
+  &:hover {
+    background: $color-brand-dark;
+    transform: translateY(-1px);
+  }
+}
+.menu-toggle,
+.mobile-nav {
+  display: none;
+}
+.skip-link {
+  position: absolute;
+  z-index: 20;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  transform: translateY(-150%);
+  background: $color-white;
+  color: $color-ink;
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile header: replace desktop links with a compact toggle menu. */
+@media (max-width: 700px) {
+  .header-inner {
+    min-height: 76px;
+  }
+  .desktop-nav,
+  .header-cta {
+    display: none;
+  }
+  .menu-toggle {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    align-content: center;
+    justify-items: center;
+    gap: 6px;
+    border: 1px solid $color-line;
+    background: transparent;
+    cursor: pointer;
+    span {
+      width: 18px;
+      height: 2px;
+      background: $color-ink;
+    }
+  }
+  .mobile-nav {
+    display: grid;
+    padding: 0.5rem 1.25rem 1.25rem;
+    background: $color-paper;
+    a {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-top: 1px solid $color-line;
+      color: $color-ink;
+      font-size: 1.05rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use 'styles/abstracts/colors' as *;
+@use 'styles/abstracts/mixins';
+@use 'styles/components/buttons';
+@use 'styles/components/forms';
+
+// Global browser defaults and typography shared by every route.
+:root {
+  color-scheme: light;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-ink;
+  background: $color-paper;
+}
+
+html {
+  // Native anchor navigation animates without JavaScript.
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  max-width: 100%;
+}
+
+// Keep page content aligned while allowing it to shrink on narrow viewports.
+.page-shell {
+  width: min(100% - 3rem, 1200px);
+  min-width: 0;
+  margin-inline: auto;
+}
+
+::selection {
+  color: $color-ink;
+  background: $color-accent;
+}
+
+#main-content,
+#vara-tjanster,
+#form {
+  scroll-margin-top: 1rem;
+}
+
+:focus-visible {
+  @include mixins.focus-ring;
+}
+
+@media (max-width: 600px) {
+  .page-shell {
+    width: min(100% - 2rem, 1200px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  // Respect operating-system accessibility settings.
+  html {
+    scroll-behavior: auto;
+  }
+}

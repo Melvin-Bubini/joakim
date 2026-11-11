@@ -1,0 +1,41 @@
+<a class="skip-link" href="#main-content">Hoppa till innehållet</a>
+<header class="site-header">
+  <div class="header-inner page-shell">
+    <a class="brand" routerLink="/" aria-label="TCH – till startsidan" (click)="closeMenu()">
+      <span class="brand-mark">TCH</span>
+      <span class="brand-caption">BILVERKSTAD · SERVICE</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Huvudmeny">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }"
+        >Hem</a
+      >
+      <a routerLink="/kontakt" routerLinkActive="is-active">Kontakt</a>
+    </nav>
+
+    <a class="header-cta" routerLink="/kontakt" fragment="form"
+      >Kontakta mig <span aria-hidden="true">↗</span></a
+    >
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuIsOpen()"
+      aria-controls="mobile-navigation"
+      [attr.aria-label]="menuIsOpen() ? 'Stäng menyn' : 'Öppna menyn'"
+      (click)="toggleMenu()"
+    >
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Render the mobile links only while the menu is open. -->
+  @if (menuIsOpen()) {
+    <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobilmeny">
+      <a routerLink="/" (click)="closeMenu()">Hem <span aria-hidden="true">↗</span></a>
+      <a routerLink="/kontakt" (click)="closeMenu()">Kontakt <span aria-hidden="true">↗</span></a>
+      <a routerLink="/kontakt" fragment="form" (click)="closeMenu()"
+        >Kontakta mig <span aria-hidden="true">↗</span></a
+      >
+    </nav>
+  }
+</header>
