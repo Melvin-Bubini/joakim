@@ -1,4 +1,4 @@
-<!-- The favicon repeats the three-letter wordmark used in the page header. -->
+<!-- The favicon repeats the TSC wordmark used in the page header. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#87634b" />
   <text
@@ -11,6 +11,6 @@
     letter-spacing="-2"
     text-anchor="middle"
   >
-    TCH
+    TSC
   </text>
 </svg>

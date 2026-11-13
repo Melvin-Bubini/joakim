@@ -1,4 +1,4 @@
-name: Deploy TCH to GitHub Pages
+name: Deploy TSC to GitHub Pages
 
 on:
   push:
@@ -44,12 +44,12 @@ jobs:
 
       # Serve the Angular app as the Pages not-found document so direct route visits still boot Angular.
       - name: Add the route fallback
-        run: cp dist/tch/browser/index.html dist/tch/browser/404.html
+        run: cp dist/tsc/browser/index.html dist/tsc/browser/404.html
 
       - name: Upload the browser build
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/tch/browser
+          path: dist/tsc/browser
 
       - name: Deploy to GitHub Pages
         id: deployment

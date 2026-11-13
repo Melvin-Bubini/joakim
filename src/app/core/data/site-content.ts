@@ -40,9 +40,9 @@ export interface OpeningHour {
   readonly hours: string;
 }
 
-// Replace these sample details with TCH's real contact information before launch.
+// Replace these sample details with TSC's real contact information before launch.
 export const CONTACT_INFO = {
-  email: 'kontakt@tch.se',
+  email: 'kontakt@tsc.se',
   phone: '08–555 12 34',
   phoneLink: '+4685551234',
   street: 'Verkstadsgatan 12',

@@ -5,12 +5,12 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home-page').then((page) => page.HomePage),
-    title: 'TCH — bilservice med omtanke',
+    title: 'TSC — bilservice med omtanke',
   },
   {
     path: 'kontakt',
     loadComponent: () => import('./pages/contact/contact-page').then((page) => page.ContactPage),
-    title: 'Kontakta TCH — personlig bilservice',
+    title: 'Kontakta TSC — personlig bilservice',
   },
   { path: '**', redirectTo: '' },
 ];

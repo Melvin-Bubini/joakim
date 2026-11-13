@@ -44,7 +44,7 @@ export class ContactPage {
       ].join('\n'),
     );
 
-    // Open an email draft until TCH connects a server-side form endpoint.
+    // Open an email draft until TSC connects a server-side form endpoint.
     this.submissionNotice.set('Ditt mejlprogram öppnas med uppgifterna ifyllda.');
     window.location.href = `mailto:${this.contact.email}?subject=${subject}&body=${body}`;
   }
